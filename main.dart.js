@@ -54862,7 +54862,7 @@ while(true)switch(s){case 0:if(p.cy){q=null
 s=1
 break}p.ch=null
 p.db=new A.Ku(b,null)
-o=A.YV(null,B.l,0,null,null,B.du,B.l,null)
+o=A.YV(null,B.l,0,null,null,B.du,b==null?B.l:b,null)
 p.dy=o
 p.fr.A(0,o)
 p.ch=a
@@ -57647,7 +57647,7 @@ while(true)switch(s){case 0:p=A.apS()
 q.id=p
 p=A.a(p,"player")
 s=2
-return A.w(p.oM(A.apU(A.ju("asset:///audio/payout.mp3",0,null)),null,!0),$async$qU)
+return A.w(p.oM(A.apU(A.ju("asset:assets/audio/payout.mp3",0,null)),B.l,!0),$async$qU)
 case 2:return A.z(null,r)}})
 return A.A($async$qU,r)},
 lO(){var s=0,r=A.B(t.H),q=this,p,o
