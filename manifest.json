@@ -1,6 +1,6 @@
 {
-    "name": "web",
-    "short_name": "web",
+    "name": "turn_turn_turn",
+    "short_name": "turn_turn_turn",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
