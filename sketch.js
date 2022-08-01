@@ -18,14 +18,16 @@ function setup() {
   beginX = 0;
   beginY = 0;
 
-  frameRate(15);
+  frameRate(25);
 
   colorMode(RGB);
 }
 
 function draw() {
-  // background(20, 20, 20);
-  background(bg);
+  clear();
+  background(0, 0);
+
+  // background(bg);
 
   //// 發射
   // fireExplode();
@@ -43,7 +45,7 @@ function draw() {
   if (frameCount % 20 == 0) {
     beginX = random(50, width - 50);
     beginY = random(30, height - 50);
-    timers2 = 200;
+    timers2 = 100;
 
     console.log('firework shoot');
   }
@@ -52,8 +54,8 @@ function draw() {
 }
 
 function mousePressed() {
-  beginX = mouseX;
-  beginY = mouseY;
+  // beginX = mouseX;
+  // beginY = mouseY;
 
   // console.log('firework add');
 
@@ -95,7 +97,9 @@ function fireLineExplode() {
     drawList[i].display();
     if (!drawList[i].isRun) {
       // circle(drawList[i].begainX, drawList[i].endY, 50);
-      drawList.splice(i, 1);
+
+      drawList.splice(i, 10);
+
     } 
   } 
 

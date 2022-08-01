@@ -22,7 +22,7 @@ class FireExplodeSystem {
             ex.run(i);
             if (ex.isDead()) {
             //   console.log('FireExplodeSystem dead');
-              this.explodeList.splice(i, 2);
+              this.explodeList.splice(i, 1);
             }
         }
     }
