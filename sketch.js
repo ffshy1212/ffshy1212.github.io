@@ -45,7 +45,7 @@ function draw() {
   if (frameCount % 20 == 0) {
     beginX = random(50, width - 50);
     beginY = random(30, height - 50);
-    timers2 = 100;
+    timers2 = 150;
 
     console.log('firework shoot');
   }
@@ -98,7 +98,7 @@ function fireLineExplode() {
     if (!drawList[i].isRun) {
       // circle(drawList[i].begainX, drawList[i].endY, 50);
 
-      drawList.splice(i, 10);
+      drawList.splice(i, 1);
 
     } 
   } 

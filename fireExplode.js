@@ -14,19 +14,19 @@ class FireExplode {
         this.lifespan = 45;
         // 煙火頭透明度
         this.firstBallLife = 255;
-        this.direction = createVector(-0.001, 0.003);
+        this.direction = createVector(-0.001, 0.001);
         // 亂數向量位置
         this.rVector = rVector;
         // 初速度
-        this.rv = 1.1;
+        this.rv = 1.065;
         // 擴散範圍
-        this.vm = 0.001; 
+        this.vm = 0.0035; 
         this.colorR = 255;
         this.colorG = 255;
         this.colorB = 255;
         this.colorDefault = color(0, 0, 0);
         // 球大小
-        this.ballSize = random(5, 10);
+        this.ballSize = random(3, 8);
         this.isFinalWhite = random([true, false]);
     }
 
@@ -35,14 +35,14 @@ class FireExplode {
     }
 
     run(index) {
-        this.update(abs(this.vm));
+        this.update(this.vm);
         this.draw(index);
     }
 
     update(move) {
 
         // 長度
-        if (this.moveX < 0.7 && !this.over) {
+        if (this.moveX < this.vm * 150 && !this.over) {
             // console.log('update', mrv);
 
             this.moveX += move;
@@ -55,7 +55,7 @@ class FireExplode {
             this.begainV.add(this.rVector.x + this.moveX, this.rVector.y + this.moveY);
 
             // 減速
-            if (this.moveX > 0.01) this.rVector.div(1.1 + this.moveX/100);
+            if (this.moveX > this.vm * 2) this.rVector.div(this.rv);
 
         } else {
             // console.log('overgr hight');
@@ -69,9 +69,9 @@ class FireExplode {
         noStroke();
 
         // 設置顏色
-        let sc = 0.6;
-        this.lifespan -= random(0.05, 0.08);
-        this.firstBallLife -= random(0.1, 0.2);
+        let sc = 1.5;
+        this.lifespan -= random(0.3, 0.4);
+        this.firstBallLife -= random(40, 60);
 
         if (this.colorR > this.fColor.getRed()) this.colorR -= sc;
         if (this.colorG > this.fColor.getGreen()) this.colorG -= sc;
