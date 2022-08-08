@@ -11,7 +11,7 @@ class FireExplode {
         this.moveX = 0;
         this.moveY = 0;
         // 拖曳透明度
-        this.lifespan = 55;
+        this.lifespan = 60;
         // 煙火頭透明度
         this.firstBallLife = 255;
         this.direction = createVector(-0.001, 0.001);
@@ -20,7 +20,7 @@ class FireExplode {
         // 初速度
         this.rv = 1.1;
         // 擴散範圍
-        this.vm = 0.0025; 
+        this.vm = 0.0016; 
         this.colorR = 255;
         this.colorG = 255;
         this.colorB = 255;
@@ -72,7 +72,7 @@ class FireExplode {
         let sc = 2;
         // 設透明度
         this.lifespan -= random(0.4, 0.5);
-        this.firstBallLife -= random(0.8, 1);
+        this.firstBallLife -= random(1, 1.2);
 
         if (this.colorR > this.fColor.getRed()) this.colorR -= sc;
         if (this.colorG > this.fColor.getGreen()) this.colorG -= sc;

@@ -18,7 +18,7 @@ function setup() {
   beginX = 0;
   beginY = 0;
 
-  frameRate(20);
+  frameRate(18);
 
   colorMode(RGB);
 }
@@ -86,7 +86,7 @@ function fireLineExplode() {
       createVector(beginX, beginY),
       colorModel,
       random(0.3, 0.8),
-      random(2, 4)
+      random(1, 3)
     );
     let f = new Firework(beginX, beginY, fem);
     drawList.push(f);
@@ -116,7 +116,7 @@ function fireExplode() {
       createVector(beginX, beginY),
       colorModel,
       random(0.3, 0.8),
-      random(2, 5)
+      random(2, 3)
     );
 
     let f = new FireExplodeSystem(fem, rVector);
