@@ -9,16 +9,35 @@ let firework;
 let isEx = true;
 let timers = 1;
 let timers2 = 1;
+let fireSpeed = 1;
+let explodeSpeed = 15;
+
+const gui = new dat.GUI();
+const controller = {
+	fireLine: 100,
+  fireSpeed: 10,
+  explodeSpeed: 15
+};
+
+function guiHandler(){
+	console.log("controller.: ", controller.fire);
+	timers2 = controller.fireLine;
+  fireSpeed = controller.fireSpeed;
+  explodeSpeed = controller.explodeSpeed;
+};
 
 
 function setup() {
+
+  gui.add(controller, 'fireLine', 1, 200, 1).onChange(guiHandler);
+  gui.add(controller, 'fireSpeed', 1, 30, 1).onChange(guiHandler);
+  gui.add(controller, 'explodeSpeed', 5, 30, 0.1).onChange(guiHandler);
+
   createCanvas(windowWidth, windowHeight);
   bg = loadImage('assets/bg.jpg');
 
   beginX = 0;
   beginY = 0;
-
-  frameRate(18);
 
   colorMode(RGB);
 }
@@ -26,6 +45,11 @@ function setup() {
 function draw() {
   clear();
   background(0, 0);
+
+  fireSpeed = controller.fireSpeed;
+  explodeSpeed = controller.explodeSpeed;
+
+  frameRate(explodeSpeed);
 
   // background(bg);
 
@@ -42,37 +66,13 @@ function draw() {
   
   //// 直接噴火
   fireExplode();
-  if (frameCount % 10 == 0) {
+  if (frameCount % fireSpeed == 0) {
     beginX = random(50, width - 50);
     beginY = random(30, height - 50);
-    timers2 = 150;
+    timers2 = controller.fireLine;
 
-    console.log('firework shoot');
+    console.log('firework shoot', timers2);
   }
-  ////
-
-}
-
-function mousePressed() {
-  // beginX = mouseX;
-  // beginY = mouseY;
-
-  // console.log('firework add');
-
-  //// 直接噴火
-  // timers = 88;
-  ////
-  
-  //// 發射
-  // let colorModel = new ColorModel(random(255), random(255), random(255));
-  // let fem = new FireExplodeModel(
-  //   createVector(beginX, beginY),
-  //   colorModel,
-  //   random(0.3, 0.8),
-  //   random(2, 4)
-  // );
-  // let f = new Firework(beginX, beginY, fem);
-  // drawList.push(f);
   ////
 
 }
