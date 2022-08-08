@@ -45,7 +45,7 @@ function draw() {
   if (frameCount % 10 == 0) {
     beginX = random(50, width - 50);
     beginY = random(30, height - 50);
-    timers2 = 200;
+    timers2 = 150;
 
     console.log('firework shoot');
   }
