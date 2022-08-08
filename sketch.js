@@ -18,7 +18,7 @@ function setup() {
   beginX = 0;
   beginY = 0;
 
-  frameRate(25);
+  frameRate(20);
 
   colorMode(RGB);
 }

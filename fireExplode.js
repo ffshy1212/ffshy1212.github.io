@@ -69,9 +69,10 @@ class FireExplode {
         noStroke();
 
         // 設置顏色
-        let sc = 1.5;
+        let sc = 2;
+        // 設透明度
         this.lifespan -= random(0.3, 0.4);
-        this.firstBallLife -= random(40, 60);
+        this.firstBallLife -= random(20, 40);
 
         if (this.colorR > this.fColor.getRed()) this.colorR -= sc;
         if (this.colorG > this.fColor.getGreen()) this.colorG -= sc;
