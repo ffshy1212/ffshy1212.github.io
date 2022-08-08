@@ -42,10 +42,10 @@ function draw() {
   
   //// 直接噴火
   fireExplode();
-  if (frameCount % 20 == 0) {
+  if (frameCount % 10 == 0) {
     beginX = random(50, width - 50);
     beginY = random(30, height - 50);
-    timers2 = 150;
+    timers2 = 200;
 
     console.log('firework shoot');
   }
