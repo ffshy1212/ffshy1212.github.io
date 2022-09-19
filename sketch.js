@@ -14,13 +14,12 @@ let explodeSpeed = 15;
 
 const gui = new dat.GUI();
 const controller = {
-	fireLine: 100,
-  fireSpeed: 10,
-  explodeSpeed: 15
+	fireLine: 120,
+  fireSpeed: 5,
+  explodeSpeed: 14.5
 };
 
 function guiHandler(){
-	console.log("controller.: ", controller.fire);
 	timers2 = controller.fireLine;
   fireSpeed = controller.fireSpeed;
   explodeSpeed = controller.explodeSpeed;
@@ -39,12 +38,12 @@ function setup() {
   beginX = 0;
   beginY = 0;
 
-  colorMode(RGB);
+  // colorMode(RGB);
 }
 
 function draw() {
   clear();
-  background(0, 0);
+  // background(0, 0);
 
   fireSpeed = controller.fireSpeed;
   explodeSpeed = controller.explodeSpeed;

@@ -42,7 +42,7 @@ class FireExplode {
     update(move) {
 
         // 長度
-        if (this.moveX < this.vm * 150 && !this.over) {
+        if (this.moveX < this.vm * 250 && !this.over) {
             // console.log('update', mrv);
 
             this.moveX += move;
@@ -55,7 +55,7 @@ class FireExplode {
             this.begainV.add(this.rVector.x + this.moveX, this.rVector.y + this.moveY);
 
             // 減速數值越大噴越遠
-            if (this.moveX > this.vm * 2.5) this.rVector.div(this.rv);
+            if (this.moveX > this.vm * 5.5) this.rVector.div(this.rv);
 
         } else {
             // console.log('overgr hight');
