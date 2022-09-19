@@ -12,31 +12,34 @@ let timers2 = 1;
 let fireSpeed = 1;
 let explodeSpeed = 15;
 
-const gui = new dat.GUI();
-const controller = {
-	fireLine: 120,
-  fireSpeed: 5,
-  explodeSpeed: 14.5
-};
+// const gui = new dat.GUI();
+// const controller = {
+// 	fireLine: 120,
+//   fireSpeed: 5,
+//   explodeSpeed: 14.5
+// };
 
-function guiHandler(){
-	timers2 = controller.fireLine;
-  fireSpeed = controller.fireSpeed;
-  explodeSpeed = controller.explodeSpeed;
-};
+// function guiHandler(){
+	// timers2 = controller.fireLine;
+  // fireSpeed = controller.fireSpeed;
+  // explodeSpeed = controller.explodeSpeed;
+// };
 
 
 function setup() {
 
-  gui.add(controller, 'fireLine', 1, 200, 1).onChange(guiHandler);
-  gui.add(controller, 'fireSpeed', 1, 30, 1).onChange(guiHandler);
-  gui.add(controller, 'explodeSpeed', 5, 30, 0.1).onChange(guiHandler);
+  // gui.add(controller, 'fireLine', 1, 200, 1).onChange(guiHandler);
+  // gui.add(controller, 'fireSpeed', 1, 30, 1).onChange(guiHandler);
+  // gui.add(controller, 'explodeSpeed', 5, 30, 0.1).onChange(guiHandler);
 
   createCanvas(windowWidth, windowHeight);
   bg = loadImage('assets/bg.jpg');
 
   beginX = 0;
   beginY = 0;
+  
+  fireSpeed = 5;
+  explodeSpeed = 14.5;
 
   // colorMode(RGB);
 }
@@ -45,8 +48,9 @@ function draw() {
   clear();
   // background(0, 0);
 
-  fireSpeed = controller.fireSpeed;
-  explodeSpeed = controller.explodeSpeed;
+  
+  // fireSpeed = controller.fireSpeed;
+  // explodeSpeed = controller.explodeSpeed;
 
   frameRate(explodeSpeed);
 
@@ -68,7 +72,8 @@ function draw() {
   if (frameCount % fireSpeed == 0) {
     beginX = random(50, width - 50);
     beginY = random(30, height - 50);
-    timers2 = controller.fireLine;
+    // timers2 = controller.fireLine;
+    timers2 = 150;
 
     console.log('firework shoot', timers2);
   }
