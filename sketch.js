@@ -14,15 +14,15 @@ let explodeSpeed = 15;
 
 // const gui = new dat.GUI();
 // const controller = {
-// 	fireLine: 120,
+// 	fireLine: 150,
 //   fireSpeed: 5,
-//   explodeSpeed: 14.5
+//   explodeSpeed: 25
 // };
 
 // function guiHandler(){
-	// timers2 = controller.fireLine;
-  // fireSpeed = controller.fireSpeed;
-  // explodeSpeed = controller.explodeSpeed;
+// 	timers2 = controller.fireLine;
+//   fireSpeed = controller.fireSpeed;
+//   explodeSpeed = controller.explodeSpeed;
 // };
 
 
@@ -39,7 +39,7 @@ function setup() {
   beginY = 0;
   
   fireSpeed = 5;
-  explodeSpeed = 14.5;
+  explodeSpeed = 25;
 
   // colorMode(RGB);
 }
@@ -120,7 +120,7 @@ function fireExplode() {
       createVector(beginX, beginY),
       colorModel,
       random(0.3, 0.8),
-      random(2, 3)
+      random(2, 4)
     );
 
     let f = new FireExplodeSystem(fem, rVector);

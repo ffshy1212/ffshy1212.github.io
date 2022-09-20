@@ -16,7 +16,6 @@ class FireExplodeSystem {
     }
 
     run() {
-        
         for (let i = this.explodeList.length - 1; i >= 0; i--) {
             let ex = this.explodeList[i];
             ex.run(i);
