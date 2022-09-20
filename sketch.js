@@ -39,7 +39,7 @@ function setup() {
   beginY = 0;
   
   fireSpeed = 5;
-  explodeSpeed = 30;
+  explodeSpeed = 25;
 
   // colorMode(RGB);
 }

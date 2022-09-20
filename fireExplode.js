@@ -18,7 +18,7 @@ class FireExplode {
         // 亂數向量位置
         this.rVector = rVector;
         // 初速度
-        this.rv = 2.1;
+        this.rv = 1.8;
         // 擴散範圍
         this.vm = 0.0016; 
         this.colorR = 255;
