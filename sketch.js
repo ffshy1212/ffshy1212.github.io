@@ -8,8 +8,8 @@ let fireExList = [];
 let firework;
 let isEx = true;
 let timers = 1;
-let fireLine = 120;
-let fireSpeed = 8;
+let fireLine = 100;
+let fireSpeed = 15;
 let explodeSpeed = 60;
 let isTest = false;
 
@@ -116,37 +116,38 @@ function fireExplode() {
   let colorModel = new ColorModel(random(255), random(255), random(255));
 
   while (fireLine > 0) {
-    
+
     let rVector = p5.Vector.random3D();
 
     let fem = new FireExplodeModel(
       createVector(beginX, beginY),
       colorModel,
       random(0.3, 0.8),
-      random(2, 3)
+      random(2, 4)
     );
 
     let f = new FireExplodeSystem(fem, rVector);
+
     drawList2.push(f);
     fireLine--;
+
   }
 
   for (let i = drawList2.length - 1; i > 0; i--) {
 
     // console.log('sketch', i);
     drawList2[i].addExplode();
-
-
     drawList2[i].run();
 
     if (drawList2[i].isDead()) {
       // console.log('isDead');
+
+      // if (frameCount % 2 == 0) {
+
+      //   drawList2.splice(i, 1);
+      // }
       drawList2.splice(i, 1);
     }
-
-
-
-
 
   }
 }

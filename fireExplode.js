@@ -11,17 +11,17 @@ class FireExplode {
         this.moveX = 0;
         this.moveY = 0;
         // 拖曳透明度
-        this.lifespan = 240;
+        this.lifespan = 200;
         this.fr = 30;
         // 煙火頭透明度
-        this.firstBallLife = 255;
-        this.direction = createVector(0.00, 0.0058);
+        this.firstBallLife = 250;
+        this.direction = createVector(-0.0006, 0.001);
         // 亂數向量位置
         this.rVector = rVector;
         // 初速度
-        this.rv = 1.38;
+        this.rv = 1.42;
         // 擴散範圍
-        this.vm = 0.001;
+        this.vm = 0.0016;
         this.colorR = 255;
         this.colorG = 255;
         this.colorB = 255;
@@ -44,7 +44,7 @@ class FireExplode {
     update(move, index) {
 
         // 長度
-        if (this.moveX < (move * 15) && !this.over) {
+        if (this.moveX < (move * 20) && !this.over) {
             // console.log('update', mrv);
 
             this.moveX += move;
@@ -57,20 +57,25 @@ class FireExplode {
             this.begainV.add(this.rVector.x + this.moveX, this.rVector.y + this.moveY);
 
             // 減速數值越大噴越遠
-            if (this.moveX >= move * random(6, 8)) this.rVector.div(this.rv + this.moveX * 25);
+            if (this.moveX >= move * random(2, 5)) this.rVector.div(this.rv + this.moveX * random(6, 8));
 
-        } else if (this.moveX > (move * 15) & this.moveX < (move * random(60, 200)) && !this.over) {
-            this.moveX += move / random(2, 6);
-            this.moveY = pow(this.moveX, 6);
+
+        } else if (this.moveX > (move * 20) & this.moveX < (move * random(80, 10000)) && !this.over) {
+            this.moveX += move / random(2, 4);
+            this.moveY += pow(this.moveX, 4);
 
             // this.rVector.mult(this.rv);
-            this.rVector.div(move * 1008);
+            // if (frameCount % 2 == 0) {
+            //     this.rVector.div(1.01);
+            // }
+            this.rVector.div(1.0014);
+
             this.rVector.add(this.direction);
 
             this.begainV.add(this.rVector.x + this.moveX, this.rVector.y + this.moveY);
 
+
         } else {
-            // console.log('overgr hight');
             this.over = true;
         }
     }
@@ -81,9 +86,9 @@ class FireExplode {
         noStroke();
 
         // 設置顏色
-        let sc = 1.8;
+        let sc = 1;
         // 設透明度
-        this.lifespan -= random(1.2, 1.8);
+        this.lifespan -= random(0.4, 0.8);
         this.firstBallLife -= random(0.1, 0.8);
 
 
@@ -100,19 +105,23 @@ class FireExplode {
         let c = this.colorDefault;
         if (index == 0) {
             c.setAlpha(this.firstBallLife);
-            if (this.moveX > 0.0008 && this.isFinalWhite) {
+            if (this.moveX > 0.008 && this.isFinalWhite) {
                 c.setRed(this.colorR + this.moveX * 250);
                 c.setGreen(this.colorG + this.moveX * 250);
                 c.setBlue(this.colorB + this.moveX * 250);
 
             }
+
+            // if (frameCount % 10 == 0) {
+            //     this.rVector.div(this.vm * 1010);
+            // }
         } else {
-            if (index > 14) {
-                if (frameCount % 2 == 0) {
-                    this.rVector.div(this.vm * 1002);
-                    // frameRate(30);
-                }
-            }
+            // if (index > 20) {
+            //     if (frameCount % 3 == 0) {
+            //         this.rVector.div(this.vm * 1001);
+            //         // frameRate(30);
+            //     }
+            // }
         }
 
         fill(c);
