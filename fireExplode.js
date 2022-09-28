@@ -11,23 +11,23 @@ class FireExplode {
         this.moveX = 0;
         this.moveY = 0;
         // 拖曳透明度
-        this.lifespan = 200;
+        this.lifespan = 240;
         this.fr = 30;
         // 煙火頭透明度
         this.firstBallLife = 250;
-        this.direction = createVector(-0.0006, 0.001);
+        this.direction = createVector(-0.0006, 0.0012);
         // 亂數向量位置
         this.rVector = rVector;
         // 初速度
-        this.rv = 1.42;
+        this.rv = 1.45;
         // 擴散範圍
-        this.vm = 0.0016;
+        this.vm = 0.0015;
         this.colorR = 255;
         this.colorG = 255;
         this.colorB = 255;
         this.colorDefault = color(0, 0, 0);
         // 球大小
-        this.ballSize = random(4, 7);
+        this.ballSize = random(4, 8);
         this.isFinalWhite = random([true, false]);
         this.a = 10;
     }
@@ -57,10 +57,10 @@ class FireExplode {
             this.begainV.add(this.rVector.x + this.moveX, this.rVector.y + this.moveY);
 
             // 減速數值越大噴越遠
-            if (this.moveX >= move * random(2, 5)) this.rVector.div(this.rv + this.moveX * random(6, 8));
+            if (this.moveX >= move * random(2, 5)) this.rVector.div(this.rv + this.moveX * random(6, 7));
 
 
-        } else if (this.moveX > (move * 20) & this.moveX < (move * random(80, 10000)) && !this.over) {
+        } else if (this.moveX > (move * 20) & this.moveX < (move * random(80, 8000)) && !this.over) {
             this.moveX += move / random(2, 4);
             this.moveY += pow(this.moveX, 4);
 
@@ -68,7 +68,7 @@ class FireExplode {
             // if (frameCount % 2 == 0) {
             //     this.rVector.div(1.01);
             // }
-            this.rVector.div(1.0014);
+            this.rVector.div(1.0012);
 
             this.rVector.add(this.direction);
 

@@ -35,7 +35,7 @@ function setup() {
     gui.add(controller, 'explodeSpeed', 5, 60, 0.1).onChange(guiHandler);
   }
 
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight, WEBGL);
   bg = loadImage('assets/bg.jpg');
 
   beginX = 0;
@@ -53,7 +53,7 @@ function draw() {
 
   // fireSpeed = controller.fireSpeed;
   // explodeSpeed = controller.explodeSpeed;
-
+  translate(-width/2,-height/2,0);
   frameRate(explodeSpeed);
 
   // background(bg);
