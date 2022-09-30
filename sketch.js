@@ -10,7 +10,7 @@ let isEx = true;
 let timers = 1;
 let fireLine = 100;
 let fireSpeed = 15;
-let explodeSpeed = 60;
+let explodeSpeed = 48;
 let isTest = false;
 
 const controller = {
@@ -48,7 +48,9 @@ function setup() {
 }
 
 function draw() {
-  clear();
+  if (frameCount % 4 == 0) {
+    clear();
+  }
   // background(0, 0);
 
   // fireSpeed = controller.fireSpeed;
