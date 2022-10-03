@@ -8,9 +8,9 @@ let fireExList = [];
 let firework;
 let isEx = true;
 let timers = 1;
-let fireLine = 100;
+let fireLine = 60;
 let fireSpeed = 15;
-let explodeSpeed = 48;
+let explodeSpeed = 47;
 let isTest = false;
 
 const controller = {
@@ -125,7 +125,7 @@ function fireExplode() {
       createVector(beginX, beginY),
       colorModel,
       random(0.3, 0.8),
-      random(2, 4)
+      random(4, 6)
     );
 
     let f = new FireExplodeSystem(fem, rVector);
