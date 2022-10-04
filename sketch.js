@@ -8,7 +8,7 @@ let timers = 1;
 let fireLine = 60;
 let fireSpeed = 15;
 let explodeSpeed = 47;
-let backgroundColor = 110;
+let backgroundColor = 255;
 let isTest = false;
 let wcg;
 let aColor;
@@ -45,7 +45,7 @@ function setup() {
   beginX = 0;
   beginY = 0;
 
-  aColor = color(0, 0, 0);
+  aColor = color(255, 255, 255);
 
   // colorMode(RGB);
 }
@@ -53,10 +53,12 @@ function setup() {
 
 function draw() {
 
-  aColor.setAlpha(backgroundColor);
+  // aColor.setAlpha(backgroundColor);
   wcg.background(0, 10);
-
-  background(aColor);
+  if (frameCount % 4 == 0) {
+    // 背景
+    clear();
+  }
 
   frameRate(explodeSpeed);
 
