@@ -4,25 +4,27 @@ let beginY;
 let bg;
 let drawList = [];
 let drawList2 = [];
-let fireExList = [];
-let firework;
-let isEx = true;
 let timers = 1;
 let fireLine = 60;
 let fireSpeed = 15;
 let explodeSpeed = 47;
-let isTest = false;
+let backgroundColor = 110;
+let isTest = true;
+let wcg;
+let aColor;
 
 const controller = {
   fireLine: fireLine,
   fireSpeed: fireSpeed,
-  explodeSpeed: explodeSpeed
+  explodeSpeed: explodeSpeed,
+  bColor: backgroundColor
 };
 
 function guiHandler() {
   fireLine = controller.fireLine;
   fireSpeed = controller.fireSpeed;
   explodeSpeed = controller.explodeSpeed;
+  backgroundColor = controller.bColor;
 };
 
 
@@ -33,43 +35,30 @@ function setup() {
     gui.add(controller, 'fireLine', 1, 200, 1).onChange(guiHandler);
     gui.add(controller, 'fireSpeed', 1, 30, 1).onChange(guiHandler);
     gui.add(controller, 'explodeSpeed', 5, 60, 0.1).onChange(guiHandler);
+    gui.add(controller, 'bColor', 0, 255, 1).onChange(guiHandler);
   }
 
-  createCanvas(windowWidth, windowHeight, WEBGL);
+  createCanvas(windowWidth, windowHeight);
+  wcg = createGraphics(width / 2, height / 2, WEBGL);
   bg = loadImage('assets/bg.jpg');
 
   beginX = 0;
   beginY = 0;
 
-  // fireSpeed = 5;
-  // explodeSpeed = 14.5;
+  aColor = color(0, 0, 0);
 
   // colorMode(RGB);
 }
 
+
 function draw() {
-  if (frameCount % 4 == 0) {
-    clear();
-  }
-  // background(0, 0);
 
-  // fireSpeed = controller.fireSpeed;
-  // explodeSpeed = controller.explodeSpeed;
-  translate(-width/2,-height/2,0);
+  aColor.setAlpha(backgroundColor);
+  wcg.background(0, 10);
+
+  background(aColor);
+
   frameRate(explodeSpeed);
-
-  // background(bg);
-
-  //// 發射
-  // fireExplode();
-  // if (frameCount % 20 == 0) {
-  //   beginX = random(50, width - 50);
-  //   beginY = random(30, height - 50);
-  //   timers = 3;
-
-  //   console.log('firework shoot');
-  // }
-  ////
 
   //// 直接噴火
   fireExplode();
@@ -77,39 +66,8 @@ function draw() {
     beginX = random(50, width - 50);
     beginY = random(30, height - 50);
     fireLine = controller.fireLine;
-    // fireLine = 120;
-
-    // console.log('firework shoot', fireLine);
   }
   ////
-
-}
-
-function fireLineExplode() {
-
-  let colorModel = new ColorModel(random(255), random(255), random(255));
-
-  while (timers > 0) {
-    let fem = new FireExplodeModel(
-      createVector(beginX, beginY),
-      colorModel,
-      random(0.3, 0.8),
-      random(4, 6)
-    );
-    let f = new Firework(beginX, beginY, fem);
-    drawList.push(f);
-    timers--;
-  }
-
-  for (let i = drawList.length - 1; i > 0; i--) {
-    drawList[i].display();
-    if (!drawList[i].isRun) {
-      // circle(drawList[i].begainX, drawList[i].endY, 50);
-
-      drawList.splice(i, 1);
-
-    }
-  }
 
 }
 
@@ -124,7 +82,6 @@ function fireExplode() {
     let fem = new FireExplodeModel(
       createVector(beginX, beginY),
       colorModel,
-      random(0.3, 0.8),
       random(4, 6)
     );
 
@@ -132,22 +89,13 @@ function fireExplode() {
 
     drawList2.push(f);
     fireLine--;
-
   }
 
   for (let i = drawList2.length - 1; i > 0; i--) {
-
-    // console.log('sketch', i);
     drawList2[i].addExplode();
     drawList2[i].run();
 
     if (drawList2[i].isDead()) {
-      // console.log('isDead');
-
-      // if (frameCount % 2 == 0) {
-
-      //   drawList2.splice(i, 1);
-      // }
       drawList2.splice(i, 1);
     }
 

@@ -3,8 +3,6 @@ class FireExplode {
         this.begainV = fem.beginV.copy();
         this.fColor = fem.fColor;
         this.rVector = fem.rVector;
-        // 長度 0.3 ~ 0.5
-        this.fLength = fem.fLength;
         // 弧度 3 ~ 5 
         this.exponent = fem.exponent;
         this.over = false;
@@ -45,7 +43,6 @@ class FireExplode {
 
         // 長度
         if (this.moveX < (move * random(20, 30)) && !this.over) {
-            // console.log('update', mrv);
 
             this.moveX += move;
             this.moveY += pow(this.moveX, this.exponent);
@@ -53,31 +50,16 @@ class FireExplode {
             // 初速
             this.rVector.mult(this.rv);
             // 方向
-            // this.rVector.add(this.direction);
             this.begainV.add(this.rVector.x + this.moveX, this.rVector.y + this.moveY);
-
             // 減速數值越大噴越遠
             if (this.moveX >= move * random(2, 3)) this.rVector.div(this.rv + this.moveX * random(2, 3));
-
 
         } else if (this.moveX > (move * random(4, 4)) & this.moveX < (move * random(300, 500)) && !this.over) {
             this.moveX += move / random(2, 3);
             this.moveY = pow(this.moveX, 10);
 
-            // this.rVector.mult(this.rv);
-            // if (frameCount % 2 == 0) {
-            //     this.rVector.div(1.01);
-            // }
-            // this.rVector.div(1 + this.moveX / 40);
-            // this.rVector.mult(1.1);
             this.rVector.add(this.direction);
-            // this.rVector.div(1 + 0.0028);
-
             this.begainV.add(this.rVector.x + this.moveX, this.rVector.y + this.moveY);
-
-            // if (this.moveX >= move * random(6, 8)) this.rVector.div(this.rv + this.moveX * random(6, 7));
-
-
 
         } else {
             this.over = true;
@@ -86,24 +68,18 @@ class FireExplode {
 
     draw(index) {
 
-        // console.log('FireExplode index', index , 'moveX', this.moveX);
         noStroke();
-
         // 設置顏色
         let sc = 1;
         // 設透明度
-        
-
-        if (this.lifespan < 255 && !this.isTop) {
+        if (this.lifespan < 300 && !this.isTop) {
             this.lifespan += random(1, 2);
         } else {
             this.isTop = true;
-            this.lifespan -= random(0.6, 0.8);
+            this.lifespan -= random(1.0, 1.6);
         }
 
         this.firstBallLife -= random(0.1, 0.8);
-
-
         if (this.colorR > this.fColor.getRed()) this.colorR -= sc;
         if (this.colorG > this.fColor.getGreen()) this.colorG -= sc;
         if (this.colorB > this.fColor.getBlue()) this.colorB -= sc;
@@ -118,9 +94,6 @@ class FireExplode {
         if (index == 0) {
             c.setAlpha(this.firstBallLife);
             if (this.moveX > 0.008 && this.isFinalWhite) {
-                // c.setRed(this.colorR + this.moveX * 250);
-                // c.setGreen(this.colorG + this.moveX * 250);
-                // c.setBlue(this.colorB + this.moveX * 250);
                 c.setRed(255);
                 c.setGreen(255);
                 c.setBlue(255);

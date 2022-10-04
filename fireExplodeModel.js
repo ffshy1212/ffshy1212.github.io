@@ -1,8 +1,7 @@
 class FireExplodeModel {
-    constructor(beginV, fColor, fLength, exponent) {
+    constructor(beginV, fColor, exponent) {
         this.beginV = beginV;
         this.fColor = fColor;
-        this.fLength = fLength;
         this.exponent = exponent;
     }
 
