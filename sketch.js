@@ -9,7 +9,7 @@ let fireLine = 60;
 let fireSpeed = 15;
 let explodeSpeed = 47;
 let backgroundColor = 110;
-let isTest = true;
+let isTest = false;
 let wcg;
 let aColor;
 
