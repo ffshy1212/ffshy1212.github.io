@@ -5,13 +5,12 @@ let bg;
 let drawList = [];
 let drawList2 = [];
 let timers = 1;
-let fireLine = 60;
+let fireLine = 50;
 let fireSpeed = 15;
 let explodeSpeed = 47;
-let backgroundColor = 255;
+let backgroundColor = 0;
 let isTest = false;
 let wcg;
-let aColor;
 
 const controller = {
   fireLine: fireLine,
@@ -39,27 +38,24 @@ function setup() {
   }
 
   createCanvas(windowWidth, windowHeight);
-  wcg = createGraphics(width / 2, height / 2, WEBGL);
+  // wcg = createGraphics(width / 2, height / 2, WEBGL);
+
   bg = loadImage('assets/bg.jpg');
+  // colorMode(HSB);
+  // background(backgroundColor);
 
   beginX = 0;
   beginY = 0;
-
-  aColor = color(255, 255, 255);
-
-  // colorMode(RGB);
 }
-
 
 function draw() {
 
-  // aColor.setAlpha(backgroundColor);
-  wcg.background(0, 10);
   if (frameCount % 4 == 0) {
     // 背景
-    clear();
+    isTest ? background(backgroundColor) : clear();
   }
 
+  // translate(-width/2,-height/2,0);
   frameRate(explodeSpeed);
 
   //// 直接噴火
